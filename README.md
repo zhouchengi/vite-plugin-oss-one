@@ -16,19 +16,19 @@ Designed with a **Provider Pattern** to support multiple OSS providers seamlessl
 
 ## 📦 Supported Providers
 
-| Provider | Built-in | Required Dependency |
-| :--- | :---: | :--- |
-| **Aliyun OSS** | ✅ | `ali-oss` |
-| **Tencent COS** | ✅ | `cos-nodejs-sdk-v5` |
-| **AWS S3** | ✅ | `@aws-sdk/client-s3` |
-| **Qiniu Cloud** | ✅ | `qiniu` |
-| **UpYun** | ✅ | `upyun` |
-| **Huawei OBS** | ✅ | `esdk-obs-nodejs` |
-| **Baidu BOS** | ✅ | `@baiducloud/sdk` |
-| **Volcano TOS** | ✅ | `@volcengine/tos-sdk` |
-| **Google Cloud** | ✅ | `@google-cloud/storage` |
-| **Azure Blob** | ✅ | `@azure/storage-blob` |
-| **MinIO** | ✅ | `@aws-sdk/client-s3` |
+| Provider | Built-in | Tested | Required Dependency |
+| :--- | :---: | :---: | :--- |
+| **Aliyun OSS** | ✅ | ✅ | `ali-oss` |
+| **Tencent COS** | ✅ | ❌ | `cos-nodejs-sdk-v5` |
+| **AWS S3** | ✅ | ❌ | `@aws-sdk/client-s3` |
+| **Qiniu Cloud** | ✅ | ❌ | `qiniu` |
+| **UpYun** | ✅ | ❌ | `upyun` |
+| **Huawei OBS** | ✅ | ❌ | `esdk-obs-nodejs` |
+| **Baidu BOS** | ✅ | ❌ | `@baiducloud/sdk` |
+| **Volcano TOS** | ✅ | ❌ | `@volcengine/tos-sdk` |
+| **Google Cloud** | ✅ | ❌ | `@google-cloud/storage` |
+| **Azure Blob** | ✅ | ❌ | `@azure/storage-blob` |
+| **MinIO** | ✅ | ❌ | `@aws-sdk/client-s3` |
 
 ### Configuration Parameters
 
@@ -209,7 +209,7 @@ Then configure in `vite.config.ts`:
 ```typescript
 import { defineConfig, loadEnv } from 'vite';
 import vitePluginOss from 'vite-plugin-oss-one';
-import { AliyunProvider } from 'vite-plugin-oss-one/providers/aliyun';
+import AliyunProvider from 'vite-plugin-oss-one/providers/aliyun';
 
 export default defineConfig(({ mode }) => {
   // Load env file based on `mode` in the current working directory.
@@ -222,18 +222,12 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [
       vitePluginOss({
-        // 1. Configure the Provider
         provider: new AliyunProvider({
           region: process.env.ALIYUN_REGION,
           accessKeyId: process.env.ALIYUN_ACCESS_KEY_ID,
           accessKeySecret: process.env.ALIYUN_ACCESS_KEY_SECRET,
           bucket: process.env.ALIYUN_BUCKET,
-        }),
-        
-        // 2. Configure Plugin Options
-        enabled: true,
-        overwrite: false,
-        // ...
+        })
       }),
     ],
   };
@@ -252,7 +246,7 @@ Then configure in `vite.config.ts`:
 ```typescript
 import { defineConfig, loadEnv } from 'vite';
 import vitePluginOss from 'vite-plugin-oss-one';
-import { TencentProvider } from 'vite-plugin-oss-one/providers/tencent';
+import TencentProvider from 'vite-plugin-oss-one/providers/tencent';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
@@ -266,8 +260,7 @@ export default defineConfig(({ mode }) => {
           SecretKey: process.env.TENCENT_SECRET_KEY,
           Bucket: process.env.TENCENT_BUCKET,
           Region: process.env.TENCENT_REGION,
-        }),
-        enabled: true,
+        })
       }),
     ],
   };
@@ -286,7 +279,7 @@ Then configure:
 ```typescript
 import { defineConfig, loadEnv } from 'vite';
 import vitePluginOss from 'vite-plugin-oss-one';
-import { S3Provider } from 'vite-plugin-oss-one/providers/s3';
+import S3Provider from 'vite-plugin-oss-one/providers/s3';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
@@ -305,8 +298,7 @@ export default defineConfig(({ mode }) => {
           // For MinIO:
           // endpoint: process.env.MINIO_ENDPOINT,
           // forcePathStyle: true,
-        }),
-        enabled: true,
+        })
       }),
     ],
   };
