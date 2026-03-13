@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-oss-one",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A lightweight, extensible Vite plugin to automatically upload build artifacts to Object Storage Services (OSS).",
   "repository": {
     "type": "git",

@@ -7,7 +7,7 @@ Designed with a **Provider Pattern** to support multiple OSS providers seamlessl
 
 ## ✨ Features
 
-- **🔌 Provider Agnostic**: Extensible architecture supporting any OSS provider (Aliyun supported out-of-the-box).
+- **🔌 Provider Agnostic**: Extensible architecture supporting any OSS provider.
 - **🚀 High Performance**: Uses `p-queue` for controlled concurrency (default 20 parallel uploads).
 - **🛡️ Reliable**: Built-in retry mechanism for network instability.
 - **🧠 Smart Upload**: Intelligent existence checks to skip already uploaded files (saving bandwidth and time).
@@ -16,19 +16,20 @@ Designed with a **Provider Pattern** to support multiple OSS providers seamlessl
 
 ## 📦 Supported Providers
 
-| Provider | Built-in | Tested | Required Dependency |
-| :--- | :---: | :---: | :--- |
-| **Aliyun OSS** | ✅ | ✅ | `ali-oss` |
-| **Tencent COS** | ✅ | ❌ | `cos-nodejs-sdk-v5` |
-| **AWS S3** | ✅ | ❌ | `@aws-sdk/client-s3` |
-| **Qiniu Cloud** | ✅ | ❌ | `qiniu` |
-| **UpYun** | ✅ | ❌ | `upyun` |
-| **Huawei OBS** | ✅ | ❌ | `esdk-obs-nodejs` |
-| **Baidu BOS** | ✅ | ❌ | `@baiducloud/sdk` |
-| **Volcano TOS** | ✅ | ❌ | `@volcengine/tos-sdk` |
-| **Google Cloud** | ✅ | ❌ | `@google-cloud/storage` |
-| **Azure Blob** | ✅ | ❌ | `@azure/storage-blob` |
-| **MinIO** | ✅ | ❌ | `@aws-sdk/client-s3` |
+| Provider | Built-in | Tested | Required Dependency | Note |
+| :--- | :---: | :---: | :--- | :--- |
+| **Aliyun OSS** | ✅ | ✅ | `ali-oss` | |
+| **Tencent COS** | ✅ | ❌ | `cos-nodejs-sdk-v5` | |
+| **AWS S3** | ✅ | ❌ | `@aws-sdk/client-s3` | |
+| **Qiniu Cloud** | ✅ | ❌ | `qiniu` | |
+| **UpYun** | ✅ | ❌ | `upyun` | |
+| **Huawei OBS** | ✅ | ❌ | `esdk-obs-nodejs` | |
+| **Baidu BOS** | ✅ | ❌ | `@baiducloud/sdk` | |
+| **Volcano TOS** | ✅ | ❌ | `@volcengine/tos-sdk` | |
+| **Google Cloud** | ✅ | ❌ | `@google-cloud/storage` | |
+| **Azure Blob** | ✅ | ❌ | `@azure/storage-blob` | |
+
+> **Note**: For S3-compatible services (like **Cloudflare R2**, **DigitalOcean Spaces**, **MinIO**, **Vultr**, etc.), use the `S3Provider` and configure the custom `endpoint`. See [Usage with S3 Compatible Services](#usage-with-s3-compatible-services-minio-r2-etc) for details.
 
 ### Configuration Parameters
 
@@ -162,24 +163,6 @@ Designed with a **Provider Pattern** to support multiple OSS providers seamlessl
 ```
 </details>
 
-<details>
-<summary><strong>MinIO</strong></summary>
-
-```typescript
-// Use S3Provider
-{
-  endpoint: 'http://localhost:9000',
-  forcePathStyle: true,
-  region: 'us-east-1', // MinIO requires a region, usually us-east-1
-  credentials: {
-    accessKeyId: 'minioadmin',
-    secretAccessKey: 'minioadmin'
-  },
-  bucket: 'your-bucket-name'
-}
-```
-</details>
-
 > Note: While `vite-plugin-oss-one` includes the code for all these providers, you must install the corresponding SDK yourself to use them.
 
 ## 💿 Installation
@@ -267,7 +250,7 @@ export default defineConfig(({ mode }) => {
 });
 ```
 
-### Usage with AWS S3 (or MinIO)
+### Usage with AWS S3
 
 First, install the SDK:
 ```bash
@@ -295,10 +278,53 @@ export default defineConfig(({ mode }) => {
             secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
           },
           bucket: process.env.AWS_BUCKET,
-          // For MinIO:
-          // endpoint: process.env.MINIO_ENDPOINT,
-          // forcePathStyle: true,
-        })
+        }),
+        enabled: true,
+      }),
+    ],
+  };
+});
+```
+
+### Usage with S3 Compatible Services (MinIO, R2, etc.)
+
+For any S3-compatible service (like MinIO, Cloudflare R2, DigitalOcean Spaces, etc.), use the `S3Provider` and provide the custom `endpoint`.
+
+First, install the SDK:
+```bash
+pnpm add -D @aws-sdk/client-s3
+```
+
+Then configure:
+
+```typescript
+import { defineConfig, loadEnv } from 'vite';
+import vitePluginOss from 'vite-plugin-oss-one';
+import S3Provider from 'vite-plugin-oss-one/providers/s3';
+
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), '');
+  Object.assign(process.env, env);
+
+  return {
+    plugins: [
+      vitePluginOss({
+        provider: new S3Provider({
+          // Common S3 options
+          region: 'us-east-1', // Required by SDK, but often ignored by some providers
+          bucket: 'your-bucket-name',
+          credentials: {
+            accessKeyId: 'your-access-key-id',
+            secretAccessKey: 'your-access-key-secret',
+          },
+          
+          // Specific to your provider:
+          endpoint: 'https://<accountid>.r2.cloudflarestorage.com', // Cloudflare R2
+          // endpoint: 'https://nyc3.digitaloceanspaces.com', // DigitalOcean
+          // endpoint: 'http://localhost:9000', // MinIO
+          // forcePathStyle: true, // Required for MinIO
+        }),
+        enabled: true,
       }),
     ],
   };
