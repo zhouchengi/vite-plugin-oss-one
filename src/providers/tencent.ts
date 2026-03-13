@@ -8,7 +8,7 @@ export interface TencentProviderOptions {
   Region: string;
 }
 
-export class TencentProvider extends BaseProvider {
+export default class TencentProvider extends BaseProvider {
   private client: any;
   private bucket: string;
   private region: string;

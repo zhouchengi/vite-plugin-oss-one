@@ -11,7 +11,7 @@ export interface GoogleProviderOptions {
   bucket: string;
 }
 
-export class GoogleProvider extends BaseProvider {
+export default class GoogleProvider extends BaseProvider {
   private client: Storage;
   private bucket: string;
 

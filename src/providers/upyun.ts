@@ -8,7 +8,7 @@ export interface UpYunProviderOptions {
   password: string;
 }
 
-export class UpYunProvider extends BaseProvider {
+export default class UpYunProvider extends BaseProvider {
   private client: any;
 
   constructor(options: UpYunProviderOptions) {

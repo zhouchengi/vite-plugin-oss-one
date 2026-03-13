@@ -8,7 +8,7 @@ export interface AzureProviderOptions {
   connectionString?: string;
 }
 
-export class AzureProvider extends BaseProvider {
+export default class AzureProvider extends BaseProvider {
   private client: BlobServiceClient;
   private containerName: string;
 

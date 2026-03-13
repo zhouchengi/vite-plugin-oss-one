@@ -13,7 +13,7 @@ export interface S3ProviderOptions {
   forcePathStyle?: boolean;
 }
 
-export class S3Provider extends BaseProvider {
+export default class S3Provider extends BaseProvider {
   private client: S3Client;
   private bucket: string;
 

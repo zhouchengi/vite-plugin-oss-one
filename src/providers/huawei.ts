@@ -9,7 +9,7 @@ export interface HuaweiProviderOptions {
   bucket: string;
 }
 
-export class HuaweiProvider extends BaseProvider {
+export default class HuaweiProvider extends BaseProvider {
   private client: any;
   private bucket: string;
 

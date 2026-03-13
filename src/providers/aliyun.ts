@@ -1,7 +1,7 @@
 import OSS from 'ali-oss';
 import { BaseProvider } from '../types.js';
 
-export class AliyunProvider extends BaseProvider {
+export default class AliyunProvider extends BaseProvider {
   private client: OSS;
 
   constructor(options: OSS.Options) {

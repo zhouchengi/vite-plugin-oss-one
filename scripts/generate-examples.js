@@ -230,7 +230,7 @@ providers.forEach(p => {
   const viteConfig = `
 import { defineConfig, loadEnv } from 'vite';
 import vitePluginOssOne from 'vite-plugin-oss-one';
-import { ${importName} } from 'vite-plugin-oss-one/providers/${providerPath}';
+import ${importName} from 'vite-plugin-oss-one/providers/${providerPath}';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');

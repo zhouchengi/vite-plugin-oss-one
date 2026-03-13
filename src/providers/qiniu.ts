@@ -9,7 +9,7 @@ export interface QiniuProviderOptions {
   zone?: any;
 }
 
-export class QiniuProvider extends BaseProvider {
+export default class QiniuProvider extends BaseProvider {
   private mac: any;
   private config: any;
   private bucketManager: any;

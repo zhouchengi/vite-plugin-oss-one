@@ -11,7 +11,7 @@ export interface BaiduProviderOptions {
   bucket: string;
 }
 
-export class BaiduProvider extends BaseProvider {
+export default class BaiduProvider extends BaseProvider {
   private client: any;
   private bucket: string;
 

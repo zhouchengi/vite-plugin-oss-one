@@ -9,7 +9,7 @@ export interface VolcanoProviderOptions {
   bucket: string;
 }
 
-export class VolcanoProvider extends BaseProvider {
+export default class VolcanoProvider extends BaseProvider {
   private client: TOS;
   private bucket: string;
 
