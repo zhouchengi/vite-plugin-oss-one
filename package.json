@@ -37,6 +37,56 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
+    },
+    "./providers/aliyun": {
+      "types": "./dist/providers/aliyun.d.ts",
+      "import": "./dist/providers/aliyun.js",
+      "require": "./dist/providers/aliyun.cjs"
+    },
+    "./providers/tencent": {
+      "types": "./dist/providers/tencent.d.ts",
+      "import": "./dist/providers/tencent.js",
+      "require": "./dist/providers/tencent.cjs"
+    },
+    "./providers/s3": {
+      "types": "./dist/providers/s3.d.ts",
+      "import": "./dist/providers/s3.js",
+      "require": "./dist/providers/s3.cjs"
+    },
+    "./providers/qiniu": {
+      "types": "./dist/providers/qiniu.d.ts",
+      "import": "./dist/providers/qiniu.js",
+      "require": "./dist/providers/qiniu.cjs"
+    },
+    "./providers/upyun": {
+      "types": "./dist/providers/upyun.d.ts",
+      "import": "./dist/providers/upyun.js",
+      "require": "./dist/providers/upyun.cjs"
+    },
+    "./providers/huawei": {
+      "types": "./dist/providers/huawei.d.ts",
+      "import": "./dist/providers/huawei.js",
+      "require": "./dist/providers/huawei.cjs"
+    },
+    "./providers/baidu": {
+      "types": "./dist/providers/baidu.d.ts",
+      "import": "./dist/providers/baidu.js",
+      "require": "./dist/providers/baidu.cjs"
+    },
+    "./providers/volcano": {
+      "types": "./dist/providers/volcano.d.ts",
+      "import": "./dist/providers/volcano.js",
+      "require": "./dist/providers/volcano.cjs"
+    },
+    "./providers/google": {
+      "types": "./dist/providers/google.d.ts",
+      "import": "./dist/providers/google.js",
+      "require": "./dist/providers/google.cjs"
+    },
+    "./providers/azure": {
+      "types": "./dist/providers/azure.d.ts",
+      "import": "./dist/providers/azure.js",
+      "require": "./dist/providers/azure.cjs"
     }
   },
   "scripts": {

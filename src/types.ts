@@ -1,4 +1,4 @@
-import OSS from 'ali-oss';
+import type OSS from 'ali-oss';
 
 export abstract class BaseProvider {
   /**

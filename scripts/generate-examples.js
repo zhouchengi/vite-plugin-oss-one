@@ -223,10 +223,14 @@ providers.forEach(p => {
   let importName = className;
   if (p.name === 'upyun') importName = 'UpYunProvider';
   if (p.name === 'minio') importName = 'S3Provider';
+
+  let providerPath = p.name;
+  if (p.name === 'minio') providerPath = 's3';
   
   const viteConfig = `
 import { defineConfig, loadEnv } from 'vite';
-import vitePluginOssOne, { ${importName} } from 'vite-plugin-oss-one';
+import vitePluginOssOne from 'vite-plugin-oss-one';
+import { ${importName} } from 'vite-plugin-oss-one/providers/${providerPath}';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');

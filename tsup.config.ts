@@ -2,7 +2,20 @@
 import { defineConfig } from 'tsup'
 
 export default defineConfig({
-  entry: ['src/index.ts'],
+  entry: [
+    'src/index.ts',
+    'src/providers/aliyun.ts',
+    'src/providers/tencent.ts',
+    'src/providers/s3.ts',
+    'src/providers/qiniu.ts',
+    'src/providers/upyun.ts',
+    'src/providers/huawei.ts',
+    'src/providers/baidu.ts',
+    'src/providers/volcano.ts',
+    'src/providers/google.ts',
+    'src/providers/azure.ts',
+  ],
+  splitting: true,
   format: ['cjs', 'esm'],
   dts: true,
   clean: true,

@@ -16,19 +16,169 @@ Designed with a **Provider Pattern** to support multiple OSS providers seamlessl
 
 ## 📦 Supported Providers
 
-| Provider | Built-in | Required Dependency | Parameter Example (JSON) |
-| :--- | :---: | :--- | :--- |
-| **Aliyun OSS** | ✅ | `ali-oss` | `{ region: '...', accessKeyId: '...', accessKeySecret: '...', bucket: '...' }` |
-| **Tencent COS** | ✅ | `cos-nodejs-sdk-v5` | `{ SecretId: '...', SecretKey: '...', Bucket: '...', Region: '...' }` |
-| **AWS S3** | ✅ | `@aws-sdk/client-s3` | `{ region: '...', credentials: { accessKeyId: '...', secretAccessKey: '...' }, bucket: '...' }` |
-| **Qiniu Cloud** | ✅ | `qiniu` | `{ accessKey: '...', secretKey: '...', bucket: '...' }` |
-| **UpYun** | ✅ | `upyun` | `{ serviceName: '...', operatorName: '...', password: '...' }` |
-| **Huawei OBS** | ✅ | `esdk-obs-nodejs` | `{ access_key_id: '...', secret_access_key: '...', server: '...', bucket: '...' }` |
-| **Baidu BOS** | ✅ | `@baiducloud/sdk` | `{ endpoint: '...', credentials: { ak: '...', sk: '...' }, bucket: '...' }` |
-| **Volcano TOS** | ✅ | `@volcengine/tos-sdk` | `{ accessKeyId: '...', accessKeySecret: '...', endpoint: '...', region: '...', bucket: '...' }` |
-| **Google Cloud** | ✅ | `@google-cloud/storage` | `{ projectId: '...', keyFilename: '...', bucket: '...' }` |
-| **Azure Blob** | ✅ | `@azure/storage-blob` | `{ connectionString: '...', containerName: '...' }` |
-| **MinIO** | ✅ | `@aws-sdk/client-s3` | Use `S3Provider`: `{ endpoint: '...', forcePathStyle: true, ...S3Options }` |
+| Provider | Built-in | Required Dependency |
+| :--- | :---: | :--- |
+| **Aliyun OSS** | ✅ | `ali-oss` |
+| **Tencent COS** | ✅ | `cos-nodejs-sdk-v5` |
+| **AWS S3** | ✅ | `@aws-sdk/client-s3` |
+| **Qiniu Cloud** | ✅ | `qiniu` |
+| **UpYun** | ✅ | `upyun` |
+| **Huawei OBS** | ✅ | `esdk-obs-nodejs` |
+| **Baidu BOS** | ✅ | `@baiducloud/sdk` |
+| **Volcano TOS** | ✅ | `@volcengine/tos-sdk` |
+| **Google Cloud** | ✅ | `@google-cloud/storage` |
+| **Azure Blob** | ✅ | `@azure/storage-blob` |
+| **MinIO** | ✅ | `@aws-sdk/client-s3` |
+
+### Configuration Parameters
+
+<details>
+<summary><strong>Aliyun OSS</strong></summary>
+
+```typescript
+{
+  region: 'oss-cn-hangzhou',
+  accessKeyId: 'your-access-key-id',
+  accessKeySecret: 'your-access-key-secret',
+  bucket: 'your-bucket-name'
+}
+```
+</details>
+
+<details>
+<summary><strong>Tencent COS</strong></summary>
+
+```typescript
+{
+  SecretId: 'your-secret-id',
+  SecretKey: 'your-secret-key',
+  Bucket: 'your-bucket-name',
+  Region: 'ap-guangzhou'
+}
+```
+</details>
+
+<details>
+<summary><strong>AWS S3</strong></summary>
+
+```typescript
+{
+  region: 'us-east-1',
+  credentials: {
+    accessKeyId: 'your-access-key-id',
+    secretAccessKey: 'your-secret-access-key'
+  },
+  bucket: 'your-bucket-name'
+}
+```
+</details>
+
+<details>
+<summary><strong>Qiniu Cloud</strong></summary>
+
+```typescript
+{
+  accessKey: 'your-access-key',
+  secretKey: 'your-secret-key',
+  bucket: 'your-bucket-name'
+}
+```
+</details>
+
+<details>
+<summary><strong>UpYun</strong></summary>
+
+```typescript
+{
+  serviceName: 'your-service-name',
+  operatorName: 'your-operator-name',
+  password: 'your-password'
+}
+```
+</details>
+
+<details>
+<summary><strong>Huawei OBS</strong></summary>
+
+```typescript
+{
+  access_key_id: 'your-access-key-id',
+  secret_access_key: 'your-secret-access-key',
+  server: 'https://obs.cn-north-4.myhuaweicloud.com',
+  bucket: 'your-bucket-name'
+}
+```
+</details>
+
+<details>
+<summary><strong>Baidu BOS</strong></summary>
+
+```typescript
+{
+  endpoint: 'https://bj.bcebos.com',
+  credentials: {
+    ak: 'your-access-key',
+    sk: 'your-secret-key'
+  },
+  bucket: 'your-bucket-name'
+}
+```
+</details>
+
+<details>
+<summary><strong>Volcano TOS</strong></summary>
+
+```typescript
+{
+  accessKeyId: 'your-access-key-id',
+  accessKeySecret: 'your-access-key-secret',
+  endpoint: 'your-endpoint',
+  region: 'your-region',
+  bucket: 'your-bucket-name'
+}
+```
+</details>
+
+<details>
+<summary><strong>Google Cloud</strong></summary>
+
+```typescript
+{
+  projectId: 'your-project-id',
+  keyFilename: '/path/to/keyfile.json',
+  bucket: 'your-bucket-name'
+}
+```
+</details>
+
+<details>
+<summary><strong>Azure Blob</strong></summary>
+
+```typescript
+{
+  connectionString: 'your-connection-string',
+  containerName: 'your-container-name'
+}
+```
+</details>
+
+<details>
+<summary><strong>MinIO</strong></summary>
+
+```typescript
+// Use S3Provider
+{
+  endpoint: 'http://localhost:9000',
+  forcePathStyle: true,
+  region: 'us-east-1', // MinIO requires a region, usually us-east-1
+  credentials: {
+    accessKeyId: 'minioadmin',
+    secretAccessKey: 'minioadmin'
+  },
+  bucket: 'your-bucket-name'
+}
+```
+</details>
 
 > Note: While `vite-plugin-oss-one` includes the code for all these providers, you must install the corresponding SDK yourself to use them.
 
@@ -58,7 +208,8 @@ Then configure in `vite.config.ts`:
 
 ```typescript
 import { defineConfig, loadEnv } from 'vite';
-import vitePluginOss, { AliyunProvider } from 'vite-plugin-oss-one';
+import vitePluginOss from 'vite-plugin-oss-one';
+import { AliyunProvider } from 'vite-plugin-oss-one/providers/aliyun';
 
 export default defineConfig(({ mode }) => {
   // Load env file based on `mode` in the current working directory.
@@ -100,7 +251,8 @@ Then configure in `vite.config.ts`:
 
 ```typescript
 import { defineConfig, loadEnv } from 'vite';
-import vitePluginOss, { TencentProvider } from 'vite-plugin-oss-one';
+import vitePluginOss from 'vite-plugin-oss-one';
+import { TencentProvider } from 'vite-plugin-oss-one/providers/tencent';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
@@ -133,7 +285,8 @@ Then configure:
 
 ```typescript
 import { defineConfig, loadEnv } from 'vite';
-import vitePluginOss, { S3Provider } from 'vite-plugin-oss-one';
+import vitePluginOss from 'vite-plugin-oss-one';
+import { S3Provider } from 'vite-plugin-oss-one/providers/s3';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
@@ -164,7 +317,7 @@ export default defineConfig(({ mode }) => {
 
 | Option | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
-| `provider` | `BaseProvider` | `AliyunProvider` | **Required**. The OSS provider instance. If not provided, it defaults to AliyunProvider (requires installing `ali-oss` and passing options). |
+| `provider` | `BaseProvider` | `undefined` | **Required**. The OSS provider instance (e.g., `new AliyunProvider(...)`). |
 | `enabled` | `boolean` | `true` | Enable or disable the plugin. |
 | `ignore` | `string \| string[]` | `undefined` | Glob patterns to ignore files. Default ignores `**/*.html` and `ssr-manifest.json`. |
 | `overwrite` | `boolean` | `false` | If `true`, forces upload of all files. If `false`, checks for existence first. |

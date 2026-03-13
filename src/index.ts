@@ -10,20 +10,9 @@ import cliProgress from 'cli-progress';
 import prettyBytes from 'pretty-bytes';
 import type { OssPluginOptions } from './types.js';
 import { BaseProvider } from './types.js';
-import { AliyunProvider } from './providers/aliyun.js';
 
 export { BaseProvider } from './types.js';
 export type { OssPluginOptions } from './types.js';
-export { AliyunProvider } from './providers/aliyun.js';
-export { TencentProvider } from './providers/tencent.js';
-export { S3Provider } from './providers/s3.js';
-export { QiniuProvider } from './providers/qiniu.js';
-export { UpYunProvider } from './providers/upyun.js';
-export { HuaweiProvider } from './providers/huawei.js';
-export { BaiduProvider } from './providers/baidu.js';
-export { VolcanoProvider } from './providers/volcano.js';
-export { GoogleProvider } from './providers/google.js';
-export { AzureProvider } from './providers/azure.js';
 
 const retry = async (fn: () => Promise<void>, times: number) => {
   let attempts = 0;
@@ -72,10 +61,8 @@ export default function vitePluginOss(options: OssPluginOptions): Plugin {
         let provider: BaseProvider;
         if (options.provider instanceof BaseProvider) {
           provider = options.provider;
-        } else if (options.provider === undefined) {
-          provider = new AliyunProvider(options as any);
         } else {
-          throw new Error('[vite-plugin-oss-one] The provider must be an instance of BaseProvider');
+          throw new Error('[vite-plugin-oss-one] Provider is required. Please import a provider (e.g., from "vite-plugin-oss-one/aliyun") and pass it to the plugin options.');
         }
 
         const outDirPath = normalizePath(path.resolve(normalizePath(buildConfig.outDir)));
