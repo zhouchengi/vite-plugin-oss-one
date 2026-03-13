@@ -28,6 +28,9 @@
     "deploy"
   ],
   "license": "ISC",
+  "files": [
+    "dist"
+  ],
   "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
