@@ -19,7 +19,7 @@ Designed with a **Provider Pattern** to support multiple OSS providers seamlessl
 | Provider | Built-in | Tested | Required Dependency | Note |
 | :--- | :---: | :---: | :--- | :--- |
 | **Aliyun OSS** | ✅ | ✅ | `ali-oss` | |
-| **Tencent COS** | ✅ | ❌ | `cos-nodejs-sdk-v5` | |
+| **Tencent COS** | ✅ | ✅ | `cos-nodejs-sdk-v5` | |
 | **AWS S3** | ✅ | ❌ | `@aws-sdk/client-s3` | |
 | **Qiniu Cloud** | ✅ | ❌ | `qiniu` | |
 | **UpYun** | ✅ | ❌ | `upyun` | |
@@ -31,7 +31,9 @@ Designed with a **Provider Pattern** to support multiple OSS providers seamlessl
 
 > **Note**: For S3-compatible services (like **Cloudflare R2**, **DigitalOcean Spaces**, **MinIO**, **Vultr**, etc.), use the `S3Provider` and configure the custom `endpoint`. See [Usage with S3 Compatible Services](#usage-with-s3-compatible-services-minio-r2-etc) for details.
 
-### Configuration Parameters
+### Configuration Examples
+
+> The following are common configuration examples. For the full list of options, please refer to the official documentation of the respective SDK.
 
 <details>
 <summary><strong>Aliyun OSS</strong></summary>
