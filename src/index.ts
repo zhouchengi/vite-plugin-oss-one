@@ -165,7 +165,7 @@ export default function vitePluginOss(options: OssPluginOptions): Plugin {
 
         const duration = (new Date().getTime() - startTime) / 1000;
 
-        console.log(`Total:   ${files.length}`);
+        console.log(`Total:   ${picocolors.cyan(files.length)}`);
         console.log(`Success: ${picocolors.green(successCount)}`);
         console.log(`Exists:  ${picocolors.gray(existCount)}`);
         console.log(`Error:   ${picocolors.red(errorCount)}`);
