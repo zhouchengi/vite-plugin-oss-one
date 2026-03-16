@@ -29,9 +29,9 @@ export interface BasePluginOptions {
   ignore?: string | string[];
 
   /**
-   * Custom headers to upload
+   * Custom options to pass to provider
    */
-  headers?: Record<string, any>;
+  options?: Record<string, any>;
 
   /**
    * Overwrite existing files

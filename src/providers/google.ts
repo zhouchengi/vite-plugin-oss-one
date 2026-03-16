@@ -25,11 +25,7 @@ export default class GoogleProvider extends BaseProvider {
   async upload(remotePath: string, localPath: string, options?: any): Promise<void> {
     await this.client.bucket(this.bucket).upload(localPath, {
       destination: remotePath,
-      metadata: {
-        cacheControl: options?.headers?.['Cache-Control'],
-        contentType: options?.headers?.['Content-Type'],
-        // ... other metadata
-      },
+      ...options,
     });
   }
 

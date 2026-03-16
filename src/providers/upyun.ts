@@ -19,7 +19,7 @@ export default class UpYunProvider extends BaseProvider {
 
   async upload(remotePath: string, localPath: string, options?: any): Promise<void> {
     const fileContent = fs.readFileSync(localPath);
-    const result = await this.client.putFile(remotePath, fileContent, options?.headers);
+    const result = await this.client.putFile(remotePath, fileContent, options);
     if (!result) {
       throw new Error(`UpYun upload failed for ${remotePath}`);
     }

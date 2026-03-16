@@ -29,8 +29,8 @@ export default class TencentProvider extends BaseProvider {
         Region: this.region,
         Key: remotePath,
         FilePath: localPath,
-        Headers: options?.headers,
-        onProgress: undefined
+        onProgress: undefined,
+        ...options
       }, (err: any, data: any) => {
         if (err) {
           reject(err);

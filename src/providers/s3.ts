@@ -30,8 +30,7 @@ export default class S3Provider extends BaseProvider {
       Bucket: this.bucket,
       Key: remotePath,
       Body: fileContent,
-      ContentType: options?.headers?.['Content-Type'],
-      // Add other headers as needed
+      ...options,
     });
     await this.client.send(command);
   }

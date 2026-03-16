@@ -131,9 +131,7 @@ export default function vitePluginOss(options: OssPluginOptions): Plugin {
             try {
               if (options.overwrite) {
                 await retry(async () => {
-                  await provider.upload(ossFilePath, fileFullPath, {
-                    headers: options.headers || {},
-                  });
+                  await provider.upload(ossFilePath, fileFullPath, options.options || {});
                 }, options.retry !== undefined ? options.retry : 3);
                 successCount++;
               } else {
@@ -142,9 +140,7 @@ export default function vitePluginOss(options: OssPluginOptions): Plugin {
                   existCount++;
                 } else {
                   await retry(async () => {
-                    await provider.upload(ossFilePath, fileFullPath, {
-                      headers: options.headers || {},
-                    });
+                    await provider.upload(ossFilePath, fileFullPath, options.options || {});
                   }, options.retry !== undefined ? options.retry : 3);
                   successCount++;
                 }

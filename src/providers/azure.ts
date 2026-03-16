@@ -30,12 +30,7 @@ export default class AzureProvider extends BaseProvider {
   async upload(remotePath: string, localPath: string, options?: any): Promise<void> {
     const containerClient = this.client.getContainerClient(this.containerName);
     const blockBlobClient = containerClient.getBlockBlobClient(remotePath);
-    await blockBlobClient.uploadFile(localPath, {
-      blobHTTPHeaders: {
-        blobContentType: options?.headers?.['Content-Type'],
-        blobCacheControl: options?.headers?.['Cache-Control'],
-      }
-    });
+    await blockBlobClient.uploadFile(localPath, options);
   }
 
   async exists(remotePath: string): Promise<boolean> {

@@ -25,7 +25,7 @@ export default class VolcanoProvider extends BaseProvider {
       bucket: this.bucket,
       key: remotePath,
       filePath: localPath,
-      headers: options?.headers
+      ...options
     });
   }
 

@@ -343,7 +343,7 @@ export default defineConfig(({ mode }) => {
 | `overwrite` | `boolean` | `false` | If `true`, forces upload of all files. If `false`, checks for existence first. |
 | `retry` | `number` | `3` | Number of retry attempts for failed uploads. |
 | `parallel` | `number` | `20` | Maximum number of concurrent uploads. |
-| `headers` | `Record<string, any>` | `undefined` | Custom headers to send with the upload request. |
+| `options` | `Record<string, any>` | `undefined` | Custom options to pass to the provider's upload method. |
 
 ## 🛠️ Custom Provider
 

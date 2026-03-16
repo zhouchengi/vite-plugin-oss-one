@@ -31,7 +31,12 @@ export default class QiniuProvider extends BaseProvider {
     });
     const uploadToken = putPolicy.uploadToken(this.mac);
     const formUploader = new qiniu.form_up.FormUploader(this.config);
-    const putExtra = new qiniu.form_up.PutExtra();
+    const putExtra = new qiniu.form_up.PutExtra(
+      options?.params,
+      options?.mimeType,
+      options?.crc32,
+      options?.checkCrc
+    );
 
     return new Promise((resolve, reject) => {
       formUploader.putFile(uploadToken, remotePath, localPath, putExtra, (respErr: any, respBody: any, respInfo: any) => {
