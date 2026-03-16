@@ -281,7 +281,6 @@ export default defineConfig(({ mode }) => {
           },
           bucket: process.env.AWS_BUCKET,
         }),
-        enabled: true,
       }),
     ],
   };
@@ -325,8 +324,7 @@ export default defineConfig(({ mode }) => {
           // endpoint: 'https://nyc3.digitaloceanspaces.com', // DigitalOcean
           // endpoint: 'http://localhost:9000', // MinIO
           // forcePathStyle: true, // Required for MinIO
-        }),
-        enabled: true,
+        })
       }),
     ],
   };
