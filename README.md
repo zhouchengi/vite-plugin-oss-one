@@ -25,7 +25,7 @@ Designed with a **Provider Pattern** to support multiple OSS providers seamlessl
 | **UpYun** | ✅ | ❌ | `upyun` | |
 | **Huawei OBS** | ✅ | ❌ | `esdk-obs-nodejs` | |
 | **Baidu BOS** | ✅ | ✅ | `@baiducloud/sdk` | |
-| **Volcano TOS** | ✅ | ❌ | `@volcengine/tos-sdk` | |
+| **Volcano TOS** | ✅ | ✅ | `@volcengine/tos-sdk` | |
 | **Google Cloud** | ✅ | ❌ | `@google-cloud/storage` | |
 | **Azure Blob** | ✅ | ❌ | `@azure/storage-blob` | |
 
