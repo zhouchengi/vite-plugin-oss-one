@@ -35,7 +35,7 @@ export default class BaiduProvider extends BaseProvider {
       await this.client.getObjectMetadata(this.bucket, remotePath);
       return true;
     } catch (error: any) {
-      if (error.code === 'NoSuchKey' || error.statusCode === 404) {
+      if (error.code === 'NoSuchKey' || error.status_code === 404) {
         return false;
       }
       throw error;
