@@ -1,7 +1,5 @@
 # vite-plugin-oss-one
 
-> **100% AI Generated** by [Trae](https://trae.ai) + **Gemini-3-Pro-Preview**.
-
 A lightweight, extensible Vite plugin to automatically upload build artifacts to Object Storage Services (OSS). 
 Designed with a **Provider Pattern** to support multiple OSS providers seamlessly.
 
