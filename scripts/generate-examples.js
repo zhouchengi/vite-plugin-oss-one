@@ -39,7 +39,7 @@ const providers = [
     name: 's3',
     pkg: '@aws-sdk/client-s3',
     pkgVer: 'latest',
-    env: ['AWS_REGION', 'AWS_ACCESS_KEY_ID', 'AWS_SECRET_ACCESS_KEY', 'AWS_BUCKET', 'AWS_ENDPOINT'],
+    env: ['AWS_REGION', 'AWS_ACCESS_KEY_ID', 'AWS_SECRET_ACCESS_KEY', 'AWS_BUCKET'],
     config: `
       provider: new S3Provider({
         region: process.env.AWS_REGION,
@@ -47,8 +47,7 @@ const providers = [
           accessKeyId: process.env.AWS_ACCESS_KEY_ID,
           secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
         },
-        bucket: process.env.AWS_BUCKET,
-        endpoint: process.env.AWS_ENDPOINT, // Optional
+        bucket: process.env.AWS_BUCKET
       }),
     `
   },

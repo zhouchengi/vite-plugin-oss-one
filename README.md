@@ -18,7 +18,7 @@ Designed with a **Provider Pattern** to support multiple OSS providers seamlessl
 | :--- | :---: | :---: | :--- | :--- |
 | **Aliyun OSS** | ✅ | ✅ | `ali-oss` | |
 | **Tencent COS** | ✅ | ✅ | `cos-nodejs-sdk-v5` | |
-| **AWS S3** | ✅ | ❌ | `@aws-sdk/client-s3` | |
+| **AWS S3** | ✅ | ✅ | `@aws-sdk/client-s3` | |
 | **Qiniu Cloud** | ✅ | ❌ | `qiniu` | |
 | **UpYun** | ✅ | ❌ | `upyun` | |
 | **Huawei OBS** | ✅ | ❌ | `esdk-obs-nodejs` | |
