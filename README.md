@@ -191,8 +191,7 @@ Then configure in `vite.config.ts`:
 
 ```typescript
 import { defineConfig, loadEnv } from 'vite';
-import vitePluginOss from 'vite-plugin-oss-one';
-import AliyunProvider from 'vite-plugin-oss-one/providers/aliyun';
+import vitePluginOss, { AliyunProvider } from 'vite-plugin-oss-one';
 
 export default defineConfig(({ mode }) => {
   // Load env file based on `mode` in the current working directory.
@@ -228,8 +227,7 @@ Then configure in `vite.config.ts`:
 
 ```typescript
 import { defineConfig, loadEnv } from 'vite';
-import vitePluginOss from 'vite-plugin-oss-one';
-import TencentProvider from 'vite-plugin-oss-one/providers/tencent';
+import vitePluginOss, { TencentProvider } from 'vite-plugin-oss-one';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
@@ -261,8 +259,7 @@ Then configure:
 
 ```typescript
 import { defineConfig, loadEnv } from 'vite';
-import vitePluginOss from 'vite-plugin-oss-one';
-import S3Provider from 'vite-plugin-oss-one/providers/s3';
+import vitePluginOss, { S3Provider } from 'vite-plugin-oss-one';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
@@ -298,8 +295,7 @@ Then configure:
 
 ```typescript
 import { defineConfig, loadEnv } from 'vite';
-import vitePluginOss from 'vite-plugin-oss-one';
-import S3Provider from 'vite-plugin-oss-one/providers/s3';
+import vitePluginOss, { S3Provider } from 'vite-plugin-oss-one';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
