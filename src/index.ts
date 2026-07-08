@@ -13,26 +13,6 @@ import { BaseProvider } from './types.js';
 
 export { BaseProvider } from './types.js';
 export type { OssPluginOptions } from './types.js';
-export { default as AliyunProvider } from './providers/aliyun.js';
-export { default as TencentProvider } from './providers/tencent.js';
-export { default as S3Provider } from './providers/s3.js';
-export { default as QiniuProvider } from './providers/qiniu.js';
-export { default as UpYunProvider } from './providers/upyun.js';
-export { default as HuaweiProvider } from './providers/huawei.js';
-export { default as BaiduProvider } from './providers/baidu.js';
-export { default as VolcanoProvider } from './providers/volcano.js';
-export { default as GoogleProvider } from './providers/google.js';
-export { default as AzureProvider } from './providers/azure.js';
-export type { AliyunProviderOptions } from './providers/aliyun.js';
-export type { TencentProviderOptions } from './providers/tencent.js';
-export type { S3ProviderOptions } from './providers/s3.js';
-export type { QiniuProviderOptions } from './providers/qiniu.js';
-export type { UpYunProviderOptions } from './providers/upyun.js';
-export type { HuaweiProviderOptions } from './providers/huawei.js';
-export type { BaiduProviderOptions } from './providers/baidu.js';
-export type { VolcanoProviderOptions } from './providers/volcano.js';
-export type { GoogleProviderOptions } from './providers/google.js';
-export type { AzureProviderOptions } from './providers/azure.js';
 
 const retry = async (fn: () => Promise<void>, times: number) => {
   let attempts = 0;
