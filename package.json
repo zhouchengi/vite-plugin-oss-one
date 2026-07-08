@@ -102,7 +102,8 @@
   "scripts": {
     "build": "tsup",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "test:examples": "node scripts/generate-examples.js && node scripts/test-examples.js"
+    "test:examples": "node scripts/generate-examples.js && node scripts/test-examples.js",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "cli-progress": "^3.12.0",
