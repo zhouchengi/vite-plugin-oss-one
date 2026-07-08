@@ -1,10 +1,12 @@
 import OSS from 'ali-oss';
 import { BaseProvider } from '../types.js';
 
+export interface AliyunProviderOptions extends OSS.Options {}
+
 export default class AliyunProvider extends BaseProvider {
   private client: OSS;
 
-  constructor(options: OSS.Options) {
+  constructor(options: AliyunProviderOptions) {
     super();
     this.client = new OSS(options);
   }
